@@ -1,4 +1,4 @@
-const db = require('../../data/db-config')
+const db = require("../../data/db-config.js")
 
 /**
   resolves to an ARRAY with all users, each user having { user_id, username }
@@ -14,8 +14,7 @@ function find() {
   resolves to an ARRAY with all users that match the filter condition
  */
 function findBy(filter) {
-  return db("users")
-         .select("user_id","username")
+  return db("users")         
          .where(filter)
          .orderBy("user_id")
 }

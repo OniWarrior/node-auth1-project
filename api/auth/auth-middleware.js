@@ -11,7 +11,7 @@ function restricted(req,res,next) {
      if(req.session && req.session.user){
        next()
      }else{
-       res.status(401).json("unauthorized")
+       res.status(401).json("you shall not pass")
      }
 }
 
@@ -24,7 +24,7 @@ function restricted(req,res,next) {
   }
 */
 function checkUsernameFree(req,res,next) {
-  User.findById({username:req.body.username})
+  User.findBy({username:req.body.username})
   .then(rows=>{
     if(!rows.length){      
       next()
@@ -47,7 +47,7 @@ function checkUsernameFree(req,res,next) {
   }
 */
 function checkUsernameExists(req,res,next) {
-  User.findById({username:req.body.username})
+  User.findBy({username:req.body.username})
   .then(rows=>{
     if(rows.length){
       req.userData= rows[0]
